@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Suhasi Gadge — Data Analyst Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root{--bg:#05080f;--bg-surface:#0b1120;--bg-card:#101a2c;--bg-card-hover:#152040;--text:#cdd6e0;--text-dim:#6e7f96;--text-bright:#eef2f7;--accent:#4fc3f7;--accent2:#81d4fa;--warm:#ffb74d;--green:#66bb6a;--rose:#ef5350;--violet:#ba68c8;--teal:#4db6ac;--border:rgba(255,255,255,0.055);--border-accent:rgba(79,195,247,0.2);--font-display:'Playfair Display',Georgia,serif;--font-body:'Manrope',system-ui,sans-serif;--font-mono:'JetBrains Mono',monospace;--radius:14px;--radius-sm:8px}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+    body{font-family:var(--font-body);background:var(--bg);color:var(--text);line-height:1.75;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:9999}
+    .container{max-width:1080px;margin:0 auto;padding:0 1.75rem}a{color:var(--accent);text-decoration:none;transition:color .2s}a:hover{color:var(--accent2)}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);background:rgba(5,8,15,0.85);border-bottom:1px solid var(--border)}
+    nav .container{display:flex;align-items:center;justify-content:space-between;height:58px}
+    .nav-logo{font-family:var(--font-display);font-size:1.15rem;color:var(--text-bright);font-weight:700}.nav-logo span{color:var(--accent)}
+    .nav-links{list-style:none;display:flex;gap:1.5rem}.nav-links a{font-size:.78rem;color:var(--text-dim);font-weight:600;letter-spacing:.08em;text-transform:uppercase;transition:color .2s}.nav-links a:hover{color:var(--accent)}
+    .mobile-menu-btn{display:none;background:none;border:none;color:var(--text);font-size:1.5rem;cursor:pointer}
+    .hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden}
+    .hero::before{content:'';position:absolute;top:-30%;right:-15%;width:700px;height:700px;background:radial-gradient(circle,rgba(79,195,247,0.07) 0%,transparent 65%);pointer-events:none}
+    .hero-inner{position:relative;z-index:1;padding:7rem 0 4rem}
+    .hero h1{font-family:var(--font-display);font-size:clamp(2.6rem,5.5vw,4.5rem);line-height:1.1;margin-bottom:.5rem;color:#fff}
+    .hero .hero-title{font-size:1.15rem;color:var(--accent);font-weight:600;margin-bottom:1.25rem;letter-spacing:.02em}
+    .hero-sub{font-size:1rem;color:var(--text-dim);max-width:620px;margin-bottom:2.25rem;font-weight:300}
+    .hero-btns{display:flex;gap:.75rem;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:.45rem;font-family:var(--font-body);font-weight:700;font-size:.82rem;padding:.65rem 1.5rem;border-radius:var(--radius-sm);border:none;cursor:pointer;transition:all .25s}
+    .btn-primary{background:var(--accent);color:var(--bg)}.btn-primary:hover{background:var(--accent2);color:var(--bg);transform:translateY(-2px);box-shadow:0 8px 28px rgba(79,195,247,0.2)}
+    .btn-ghost{background:transparent;color:var(--text);border:1px solid rgba(255,255,255,0.12)}.btn-ghost:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+    section{padding:5rem 0}.sec-label{font-family:var(--font-mono);font-size:.7rem;color:var(--accent);text-transform:uppercase;letter-spacing:.14em;margin-bottom:.65rem}
+    .sec-title{font-family:var(--font-display);font-size:clamp(1.7rem,3vw,2.3rem);color:#fff;margin-bottom:.75rem}
+    .sec-desc{color:var(--text-dim);max-width:600px;margin-bottom:2.75rem;font-weight:300;font-size:.95rem}hr.divider{border:none;border-top:1px solid var(--border)}
+    .about-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:2.5rem;align-items:start}
+    .about-text p{color:var(--text);margin-bottom:.85rem;font-weight:300;font-size:.92rem}.about-text p strong{color:var(--text-bright);font-weight:600}
+    .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem}
+    .stat-box{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center}
+    .stat-box .val{font-family:var(--font-display);font-size:1.7rem;color:var(--accent);display:block}.stat-box .lbl{font-size:.7rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:.06em}
+    .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
+    .skill-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;transition:all .3s}
+    .skill-card:hover{background:var(--bg-card-hover);transform:translateY(-3px);border-color:var(--border-accent);box-shadow:0 10px 36px rgba(0,0,0,0.3)}
+    .skill-card .sk-icon{width:38px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1.15rem;margin-bottom:.85rem}
+    .sk-blue{background:rgba(79,195,247,0.1)}.sk-warm{background:rgba(255,183,77,0.1)}.sk-green{background:rgba(102,187,106,0.1)}.sk-rose{background:rgba(239,83,80,0.1)}
+    .skill-card h3{font-size:.95rem;font-weight:700;color:var(--text-bright);margin-bottom:.35rem}.skill-card p{font-size:.82rem;color:var(--text-dim);line-height:1.6}
+    .project-card{display:grid;grid-template-columns:380px 1fr;gap:0;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:1.75rem;transition:all .35s}
+    .project-card:hover{border-color:var(--border-accent);box-shadow:0 16px 52px rgba(0,0,0,0.35);transform:translateY(-3px)}
+    .proj-img{width:100%;height:100%;min-height:280px;object-fit:cover;display:block;background:var(--bg-surface)}
+    .proj-img-placeholder{width:100%;height:100%;min-height:280px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--bg-surface) 0%,var(--bg-card) 100%);font-size:3rem;color:rgba(255,255,255,0.06)}
+    .proj-body{padding:1.75rem 2rem;display:flex;flex-direction:column}
+    .proj-badge{display:inline-block;font-family:var(--font-mono);font-size:.63rem;letter-spacing:.08em;text-transform:uppercase;padding:.2rem .55rem;border-radius:5px;font-weight:500;margin-bottom:.65rem;width:fit-content}
+    .badge-sc{background:rgba(79,195,247,0.1);color:var(--accent);border:1px solid rgba(79,195,247,0.2)}
+    .badge-hc{background:rgba(102,187,106,0.1);color:var(--green);border:1px solid rgba(102,187,106,0.2)}
+    .badge-fi{background:rgba(255,183,77,0.1);color:var(--warm);border:1px solid rgba(255,183,77,0.2)}
+    .badge-nlp{background:rgba(186,104,200,0.1);color:var(--violet);border:1px solid rgba(186,104,200,0.2)}
+    .badge-ec{background:rgba(77,182,172,0.1);color:var(--teal);border:1px solid rgba(77,182,172,0.2)}
+    .proj-body h3{font-size:1.08rem;font-weight:700;color:#fff;margin-bottom:.5rem;line-height:1.35}
+    .proj-body .proj-desc{font-size:.84rem;color:var(--text-dim);margin-bottom:.85rem;flex:1}
+    .proj-highlights{margin-bottom:.85rem}.proj-highlights li{font-size:.8rem;color:var(--text);margin-bottom:.25rem;padding-left:1rem;position:relative;list-style:none;line-height:1.6}
+    .proj-highlights li::before{content:'\25B8';position:absolute;left:0;color:var(--accent);font-size:.7rem;top:2px}
+    .proj-tech{display:flex;flex-wrap:wrap;gap:.3rem;margin-bottom:.85rem}
+    .proj-tech span{font-family:var(--font-mono);font-size:.62rem;background:rgba(255,255,255,0.04);border:1px solid var(--border);padding:.12rem .45rem;border-radius:4px;color:var(--text-dim)}
+    .proj-links{display:flex;flex-wrap:wrap;gap:.5rem}
+    .proj-link-btn{display:inline-flex;align-items:center;gap:.35rem;font-size:.75rem;font-weight:700;padding:.4rem .85rem;border-radius:6px;transition:all .2s}
+    .pl-github{background:rgba(79,195,247,0.1);color:var(--accent);border:1px solid rgba(79,195,247,0.2)}.pl-github:hover{background:rgba(79,195,247,0.2);color:var(--accent2)}
+    .pl-dashboard{background:rgba(255,183,77,0.1);color:var(--warm);border:1px solid rgba(255,183,77,0.2)}.pl-dashboard:hover{background:rgba(255,183,77,0.2)}
+    .pl-sql{background:rgba(102,187,106,0.1);color:var(--green);border:1px solid rgba(102,187,106,0.2)}.pl-sql:hover{background:rgba(102,187,106,0.2)}
+    .pl-app{background:rgba(186,104,200,0.1);color:var(--violet);border:1px solid rgba(186,104,200,0.2)}.pl-app:hover{background:rgba(186,104,200,0.2)}
+    .timeline{position:relative;padding-left:2rem}.timeline::before{content:'';position:absolute;left:6px;top:8px;bottom:8px;width:1px;background:var(--border)}
+    .tl-item{position:relative;margin-bottom:2.25rem}.tl-item::before{content:'';position:absolute;left:-2rem;top:8px;width:11px;height:11px;border-radius:50%;background:var(--bg);border:2px solid var(--accent);z-index:1}
+    .tl-item.current::before{background:var(--accent);box-shadow:0 0 10px rgba(79,195,247,0.4)}
+    .tl-header{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:.5rem;margin-bottom:.35rem}
+    .tl-role{font-size:1rem;font-weight:700;color:var(--text-bright)}.tl-date{font-family:var(--font-mono);font-size:.72rem;color:var(--text-dim);letter-spacing:.04em}
+    .tl-company{font-size:.88rem;color:var(--accent);margin-bottom:.5rem;font-weight:500}.tl-location{font-size:.78rem;color:var(--text-dim);margin-bottom:.5rem;font-style:italic}
+    .tl-bullets{list-style:none}.tl-bullets li{font-size:.84rem;color:var(--text);margin-bottom:.35rem;padding-left:1.1rem;position:relative;line-height:1.65}
+    .tl-bullets li::before{content:'\2013';position:absolute;left:0;color:var(--text-dim)}
+    .edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    .edu-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem}
+    .edu-card h3{font-size:.95rem;font-weight:700;color:var(--text-bright);margin-bottom:.25rem}.edu-card .edu-school{font-size:.85rem;color:var(--accent);margin-bottom:.2rem}.edu-card .edu-date{font-family:var(--font-mono);font-size:.72rem;color:var(--text-dim)}
+    .cert-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:.75rem}
+    .cert-item{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1rem 1.25rem;display:flex;align-items:center;gap:.85rem}
+    .cert-icon{width:36px;height:36px;border-radius:8px;background:rgba(255,183,77,0.1);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+    .cert-item .cert-name{font-size:.85rem;font-weight:600;color:var(--text-bright)}.cert-item .cert-org{font-size:.75rem;color:var(--text-dim)}
+    .pub-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem}
+    .pub-card h3{font-size:.95rem;font-weight:600;color:var(--text-bright);margin-bottom:.35rem}.pub-card p{font-size:.82rem;color:var(--text-dim)}
+    .contact-row{display:flex;flex-wrap:wrap;gap:.85rem}
+    .contact-card{display:flex;align-items:center;gap:.75rem;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:.85rem 1.25rem;transition:all .25s;color:var(--text)}
+    .contact-card:hover{border-color:var(--border-accent);background:var(--bg-card-hover);transform:translateY(-2px);color:var(--text)}
+    .cc-icon{width:36px;height:36px;border-radius:8px;background:rgba(79,195,247,0.1);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+    .cc-label{font-size:.7rem;color:var(--text-dim)}.cc-value{font-size:.85rem;font-weight:500}
+    footer{padding:2.5rem 0;border-top:1px solid var(--border);text-align:center;font-size:.75rem;color:var(--text-dim)}
+    .fade-up{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}.fade-up.visible{opacity:1;transform:translateY(0)}
+    @media(max-width:900px){.project-card{grid-template-columns:1fr}.proj-img,.proj-img-placeholder{min-height:200px;max-height:220px}}
+    @media(max-width:768px){.nav-links{display:none;flex-direction:column;position:absolute;top:58px;left:0;right:0;background:rgba(5,8,15,0.95);padding:1rem 1.75rem;gap:1rem;border-bottom:1px solid var(--border)}.mobile-menu-btn{display:block}.about-grid{grid-template-columns:1fr}.stats-row{grid-template-columns:repeat(2,1fr)}.edu-grid{grid-template-columns:1fr}.hero-inner{padding:5.5rem 0 3rem}section{padding:3.5rem 0}}
+  </style>
+</head>
+<body>
+<nav><div class="container"><a href="#" class="nav-logo">Suhasi<span>.</span></a><ul class="nav-links"><li><a href="#about">About</a></li><li><a href="#skills">Skills</a></li><li><a href="#projects">Projects</a></li><li><a href="#experience">Experience</a></li><li><a href="#education">Education</a></li><li><a href="#contact">Contact</a></li></ul><button class="mobile-menu-btn" onclick="let n=document.querySelector('.nav-links');n.style.display=n.style.display==='flex'?'none':'flex'" aria-label="Menu">&#9776;</button></div></nav>
+
+<section class="hero"><div class="container"><div class="hero-inner">
+  <h1 class="fade-up">Suhasi Gadge</h1>
+  <div class="hero-title fade-up">Data Analyst &nbsp;|&nbsp; SQL, Python, Power BI, AWS</div>
+  <p class="hero-sub fade-up">Building end-to-end pipelines that turn multi-domain data into business outcomes &mdash; across supply chain, healthcare, financial services, e-commerce, and logistics.</p>
+  <div class="hero-btns fade-up">
+    <a href="#projects" class="btn btn-primary">View Projects &darr;</a>
+    <a href="https://linkedin.com/in/suhasi-gadge" target="_blank" class="btn btn-ghost"><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg> LinkedIn</a>
+    <a href="https://github.com/suhasi-gadge" target="_blank" class="btn btn-ghost"><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg> GitHub</a>
+    <a href="https://medium.com/@suhasigadge" target="_blank" class="btn btn-ghost"><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zm7.42 0c0 3.54-1.51 6.42-3.38 6.42S14.2 15.54 14.2 12s1.51-6.42 3.38-6.42 3.38 2.88 3.38 6.42zM24 12c0 3.17-.53 5.75-1.19 5.75S21.62 15.17 21.62 12s.53-5.75 1.19-5.75S24 8.83 24 12z"/></svg> Blog</a>
+  </div>
+</div></div></section>
+<hr class="divider">
+
+<section id="about"><div class="container">
+  <div class="sec-label fade-up">About Me</div><h2 class="sec-title fade-up">Background</h2>
+  <div class="about-grid"><div class="about-text fade-up">
+    <p>Most teams don't have a data problem &mdash; they have a <strong>clarity problem</strong>. I've seen how messy, inconsistent data can slow decisions, delay reporting, and create confusion across teams. That's the kind of problem I enjoy solving.</p>
+    <p>I'm a <strong>Data Analyst with 2+ years of experience</strong> building end-to-end analytics solutions &mdash; from raw data ingestion and pipeline design to interactive dashboards that drive business decisions. I work with <strong>SQL, Python, Power BI, and AWS</strong> across healthcare, supply chain, e-commerce, financial services, and logistics.</p>
+    <p>My approach goes beyond surface-level reporting. I design layered data models (star schemas, fact/dimension tables), write production-grade SQL pipelines, perform deep exploratory analysis in Python, and deliver executive-ready dashboards with actionable insights.</p>
+  </div><div><div class="stats-row fade-up">
+    <div class="stat-box"><span class="val">2+</span><span class="lbl">Years Exp.</span></div>
+    <div class="stat-box"><span class="val">5</span><span class="lbl">Domains</span></div>
+    <div class="stat-box"><span class="val">MS</span><span class="lbl">CS Degree</span></div>
+    <div class="stat-box"><span class="val" style="font-size:1.1rem;">Chicago</span><span class="lbl">Based In</span></div>
+  </div></div></div>
+</div></section>
+<hr class="divider">
+
+<section id="skills"><div class="container">
+  <div class="sec-label fade-up">Core Skills</div><h2 class="sec-title fade-up">Technical Toolkit</h2>
+  <div class="skills-grid">
+    <div class="skill-card fade-up"><div class="sk-icon sk-blue">&#128450;</div><h3>SQL &amp; Data Modeling</h3><p>PostgreSQL &mdash; joins, CTEs, window functions, stored procedures. Star schema, fact/dimension tables, layered architecture (Bronze &rarr; Silver &rarr; Gold), data validation.</p></div>
+    <div class="skill-card fade-up"><div class="sk-icon sk-warm">&#128200;</div><h3>Visualization &amp; BI</h3><p>Power BI dashboards with DAX measures, star schema data models. Executive reporting, interactive drill-downs. Metrics to business narratives.</p></div>
+    <div class="skill-card fade-up"><div class="sk-icon sk-green">&#128013;</div><h3>Python for Analytics</h3><p>Pandas, NumPy, Matplotlib, Seaborn, SciPy. Feature engineering, time-series forecasting, NLP pipelines, transformer fine-tuning, statistical testing.</p></div>
+    <div class="skill-card fade-up"><div class="sk-icon sk-rose">&#9729;</div><h3>Cloud &amp; Tools</h3><p>AWS (ML, Data Engineering, NLP certifications). ETL pipelines, Git/GitHub, Jupyter, Streamlit, Metaflow.</p></div>
+  </div>
+</div></section>
+<hr class="divider">
+
+<section id="projects"><div class="container">
+  <div class="sec-label fade-up">Featured Work</div><h2 class="sec-title fade-up">Portfolio Projects</h2>
+  <p class="sec-desc fade-up">Each project tackles a real analytics problem end-to-end &mdash; from raw data to validated KPIs, layered data models, and executive dashboards.</p>
+
+  <!-- 1 Consumer Complaints -->
+  <div class="project-card fade-up">
+    <img class="proj-img" src="https://raw.githubusercontent.com/suhasi-gadge/consumer_complaints_analytics/main/images/executive_dashboard.png" alt="Consumer Complaints Dashboard" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+    <div class="proj-img-placeholder" style="display:none;">&#128202;</div>
+    <div class="proj-body">
+      <span class="proj-badge badge-fi">Financial Services</span>
+      <h3>Consumer Complaint Analytics &mdash; CFPB Regulatory Intelligence</h3>
+      <p class="proj-desc">Analyzed 555K+ CFPB consumer complaints to identify systemic service failures, measure resolution effectiveness, and surface geographic &amp; demographic patterns reducing regulatory risk.</p>
+      <ul class="proj-highlights">
+        <li>Star schema (7 dims, 1 fact) with 30+ analytical queries across 4 focus areas</li>
+        <li>72.7% explanation-only closures carry highest dispute rate (22.4%)</li>
+        <li>Population-normalized geographic hotspots; South region carries 39.2% of complaints</li>
+        <li>4-page Power BI dashboard, 17 EDA charts, 7 deep-dive statistical analyses</li>
+      </ul>
+      <div class="proj-tech"><span>PostgreSQL</span><span>SQL</span><span>Python</span><span>Pandas</span><span>Seaborn</span><span>SciPy</span><span>Power BI</span><span>DAX</span></div>
+      <div class="proj-links">
+        <a href="https://github.com/suhasi-gadge/consumer_complaints_analytics" target="_blank" class="proj-link-btn pl-github">&#128193; Repository</a>
+        <a href="https://github.com/suhasi-gadge/consumer_complaints_analytics/blob/main/sql/analysis/04_business_queries.sql" target="_blank" class="proj-link-btn pl-sql">&#128270; SQL Queries</a>
+        <a href="https://github.com/suhasi-gadge/consumer_complaints_analytics/blob/main/powerbi/consumer_complaints_data_analytics.pdf" target="_blank" class="proj-link-btn pl-dashboard">&#128202; Dashboard PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2 Healthcare -->
+  <div class="project-card fade-up">
+    <img class="proj-img" src="https://raw.githubusercontent.com/suhasi-gadge/healthcare_data_analytics/main/images/executive_summary.png" alt="Healthcare Dashboard" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+    <div class="proj-img-placeholder" style="display:none;">&#127973;</div>
+    <div class="proj-body">
+      <span class="proj-badge badge-hc">Healthcare</span>
+      <h3>Healthcare Data Analytics &mdash; Cost, Utilization &amp; Outcomes</h3>
+      <p class="proj-desc">End-to-end analytics across a Massachusetts health system: 460K+ records, 15 tables, 1,119 facilities. Patient outcomes, utilization, payer coverage, and medication cost drivers.</p>
+      <ul class="proj-highlights">
+        <li>Top 10% utilizers consume 38.9% of encounters and $2.67M of $6.87M costs</li>
+        <li>Payer coverage just 48.2%; $1.31M unreimbursed from 693 uninsured patients</li>
+        <li>Top 5 drugs: $47.2M (47.1%) of $100.1M medication spend</li>
+        <li>53 charts, 40 SQL queries, 5 notebooks, 4-page Power BI dashboard</li>
+      </ul>
+      <div class="proj-tech"><span>PostgreSQL</span><span>SQL</span><span>Python</span><span>Pandas</span><span>Matplotlib</span><span>Seaborn</span><span>Power BI</span><span>DAX</span></div>
+      <div class="proj-links">
+        <a href="https://github.com/suhasi-gadge/healthcare_data_analytics" target="_blank" class="proj-link-btn pl-github">&#128193; Repository</a>
+        <a href="https://github.com/suhasi-gadge/healthcare_data_analytics/blob/main/sql/analysis/03_analysis_queries.sql" target="_blank" class="proj-link-btn pl-sql">&#128270; SQL Queries</a>
+        <a href="https://github.com/suhasi-gadge/healthcare_data_analytics/blob/main/powerbi/Healthcare%20Data%20Analytics%20Dashboard.pdf" target="_blank" class="proj-link-btn pl-dashboard">&#128202; Dashboard PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3 E-Commerce -->
+  <div class="project-card fade-up">
+    <img class="proj-img" src="https://raw.githubusercontent.com/suhasi-gadge/e-commerce_performance_analytics/main/images/executive_dashboard.png" alt="E-Commerce Dashboard" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+    <div class="proj-img-placeholder" style="display:none;">&#128666;</div>
+    <div class="proj-body">
+      <span class="proj-badge badge-ec">E-Commerce / Supply Chain</span>
+      <h3>Last-Mile Delivery Performance &amp; Freight Optimization at Olist</h3>
+      <p class="proj-desc">96,478 orders across 8 tables (~1.05M records): delivery failures, freight cost drivers, seller bottlenecks, and geographic supply-demand imbalance.</p>
+      <ul class="proj-highlights">
+        <li>Late orders (8.1%) get 2.57-star avg vs. 4.29 on-time; 46% receive 1-star</li>
+        <li>Freight-to-price ratio varies 12x: 6% (computers) to 68% (accessories)</li>
+        <li>60% sellers in SP; Northeastern states face 3&ndash;4x higher late rates</li>
+        <li>Star schema with 2 fact tables, Power BI dashboards, 5 recommendations</li>
+      </ul>
+      <div class="proj-tech"><span>PostgreSQL</span><span>SQL</span><span>Python</span><span>Pandas</span><span>Power BI</span><span>DAX</span><span>Geospatial</span></div>
+      <div class="proj-links">
+        <a href="https://github.com/suhasi-gadge/e-commerce_performance_analytics" target="_blank" class="proj-link-btn pl-github">&#128193; Repository</a>
+        <a href="https://github.com/suhasi-gadge/e-commerce_performance_analytics/tree/main/sql" target="_blank" class="proj-link-btn pl-sql">&#128270; SQL Queries</a>
+        <a href="https://github.com/suhasi-gadge/e-commerce_performance_analytics/tree/main/python/notebooks" target="_blank" class="proj-link-btn pl-dashboard">&#128211; Notebooks</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4 OTIF -->
+  <div class="project-card fade-up">
+    <img class="proj-img" src="https://raw.githubusercontent.com/suhasi-gadge/OTIF_Delivery_Performance_Analysis/main/asset/dashboard_overview.png" alt="OTIF Dashboard" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+    <div class="proj-img-placeholder" style="display:none;">&#128230;</div>
+    <div class="proj-body">
+      <span class="proj-badge badge-sc">Supply Chain / Logistics</span>
+      <h3>OTIF Delivery Performance Analysis</h3>
+      <p class="proj-desc">Multi-warehouse OTIF delivery performance: service-level gaps, root causes of late/incomplete deliveries, and improvement priorities across customers, regions, and carriers.</p>
+      <ul class="proj-highlights">
+        <li>Layered SQL pipeline (RAW &rarr; STAGING &rarr; MART) with fact &amp; dimension tables</li>
+        <li>OTIF, On-Time %, In-Full % KPIs with validated SQL logic</li>
+        <li>Late deliveries drive more OTIF loss than quantity shortfalls</li>
+        <li>Data quality checks and Power BI drill-down dashboard</li>
+      </ul>
+      <div class="proj-tech"><span>PostgreSQL</span><span>SQL</span><span>Power BI</span><span>DAX</span><span>Star Schema</span><span>Data Warehousing</span></div>
+      <div class="proj-links">
+        <a href="https://github.com/suhasi-gadge/OTIF_Delivery_Performance_Analysis" target="_blank" class="proj-link-btn pl-github">&#128193; Repository</a>
+        <a href="https://github.com/suhasi-gadge/OTIF_Delivery_Performance_Analysis/tree/main/sql" target="_blank" class="proj-link-btn pl-sql">&#128270; SQL Queries</a>
+        <a href="https://github.com/suhasi-gadge/OTIF_Delivery_Performance_Analysis/tree/main/docs" target="_blank" class="proj-link-btn pl-dashboard">&#128196; Documentation</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5 Open Avenues -->
+  <div class="project-card fade-up">
+    <img class="proj-img" src="https://raw.githubusercontent.com/suhasi-gadge/Open_Avenues_Build_Fellowship_Projects/main/Medical%20Data%20Extraction%20Using%20NLP/img/Single%20Report%2001.png" alt="NLP Streamlit App" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+    <div class="proj-img-placeholder" style="display:none;">&#129504;</div>
+    <div class="proj-body">
+      <span class="proj-badge badge-nlp">NLP / Consulting</span>
+      <h3>Open Avenues Build Fellowship &mdash; NLP Medical Extraction &amp; B2B Platform</h3>
+      <p class="proj-desc">Two consulting-style projects: NLP medical data extraction from radiology reports (F1: 0.78 &rarr; 0.92) and B2B aggregator platform design for warehouse &amp; logistics.</p>
+      <ul class="proj-highlights">
+        <li>Fine-tuned transformer (BIOES tagging) boosting F1 from 0.78 &rarr; 0.92</li>
+        <li>Streamlit app: upload reports, toggle modes, batch-process CSVs</li>
+        <li>B2B platform: ERD design, SRS documentation, payment gateway integration</li>
+        <li>Reproducible workflows with Metaflow; LLM prompt engineering</li>
+      </ul>
+      <div class="proj-tech"><span>Python</span><span>NLP</span><span>LLMs</span><span>HuggingFace</span><span>Metaflow</span><span>Streamlit</span><span>ERD</span><span>SRS</span></div>
+      <div class="proj-links">
+        <a href="https://github.com/suhasi-gadge/Open_Avenues_Build_Fellowship_Projects" target="_blank" class="proj-link-btn pl-github">&#128193; Repository</a>
+        <a href="https://github.com/suhasi-gadge/Open_Avenues_Build_Fellowship_Projects/tree/main/Medical%20Data%20Extraction%20Using%20NLP" target="_blank" class="proj-link-btn pl-app">&#129504; NLP Project</a>
+        <a href="https://github.com/suhasi-gadge/Open_Avenues_Build_Fellowship_Projects/tree/main/B2B%20Aggregator%20Model%20for%20E-Commerce%20Platform" target="_blank" class="proj-link-btn pl-sql">&#127981; B2B Project</a>
+      </div>
+    </div>
+  </div>
+</div></section>
+<hr class="divider">
+
+<section id="experience"><div class="container">
+  <div class="sec-label fade-up">Work Experience</div><h2 class="sec-title fade-up">Professional Journey</h2>
+  <div class="timeline fade-up">
+    <div class="tl-item current"><div class="tl-header"><span class="tl-role">Data Analyst</span><span class="tl-date">Feb 2026 &ndash; Present</span></div><div class="tl-company">Community Dreams Foundation</div>
+      <ul class="tl-bullets"><li>Designed a dimensional data warehouse (star schema) integrating 8+ datasets (~500K+ records) for cross-analysis across time, geography, and patient demographics</li><li>Built SQL-based ETL pipelines and layered architecture (Bronze &rarr; Silver &rarr; Gold), reducing manual reporting effort by 60%</li><li>Led a team of 10 data engineers as EPM, driving execution across multiple workstreams</li><li>Collaborated with cross-domain stakeholders to translate business needs into technical solutions</li></ul>
+    </div>
+    <div class="tl-item"><div class="tl-header"><span class="tl-role">Build Student Consultant &ndash; Data Analyst</span><span class="tl-date">Jun 2025 &ndash; Nov 2025</span></div><div class="tl-company">Open Avenues Foundation</div><div class="tl-location">Chicago, Illinois</div>
+      <ul class="tl-bullets"><li><strong>NLP Medical Data Extraction:</strong> Boosted F1 from 0.78 &rarr; 0.92 using fine-tuned transformers; deployed Streamlit app for clinicians</li><li><strong>B2B Aggregator Platform:</strong> Designed ERD with PK/FK constraints, authored SRS, presented on payment gateway integration</li></ul>
+    </div>
+    <div class="tl-item"><div class="tl-header"><span class="tl-role">Tech Content Writer</span><span class="tl-date">Jun 2025 &ndash; Oct 2025</span></div><div class="tl-company">Medium</div><div class="tl-location">Chicago, Illinois</div>
+      <ul class="tl-bullets"><li>Published technical blogs on full stack web development using React, Node.js, TypeScript, Express, and PostgreSQL</li></ul>
+    </div>
+    <div class="tl-item"><div class="tl-header"><span class="tl-role">Data Analyst (Operations Analytics)</span><span class="tl-date">Mar 2022 &ndash; Nov 2023</span></div><div class="tl-company">Probus Software Private Limited</div><div class="tl-location">Pune, Maharashtra, India</div>
+      <ul class="tl-bullets"><li>Enhanced data reliability to 97% and reduced payroll reconciliation time by 40% via HRMS normalization and PK/FK enforcement</li><li>Reduced manual reporting by 5 hours/cycle with 30+ SQL views, CTEs, and stored procedures</li><li>Reduced unplanned overtime by 8% with SQL-based attendance pattern dashboards</li><li>Improved report performance by 60% (1.8s to &lt;700ms) via execution plan optimization and composite indexing</li><li>Achieved near-zero critical errors in payroll release; resolved 80+ issues with QA teams</li></ul>
+    </div>
+    <div class="tl-item"><div class="tl-header"><span class="tl-role">Undergraduate Project Mentor &amp; Teaching Assistant</span><span class="tl-date">Jan 2023 &ndash; Oct 2023</span></div><div class="tl-company">Bharati Vidyapeeth University College of Engineering</div><div class="tl-location">Pune, India</div>
+      <ul class="tl-bullets"><li>Mentored 2 project teams: image detection and earthquake/tsunami forecasting</li><li>Delivered BI tutorials for 60+ students; led Image Processing lab sessions for ~40 students</li></ul>
+    </div>
+    <div class="tl-item"><div class="tl-header"><span class="tl-role">Data Analyst Intern</span><span class="tl-date">Jan 2022 &ndash; Feb 2022</span></div><div class="tl-company">TwoWaits</div><div class="tl-location">Pune, India</div>
+      <ul class="tl-bullets"><li>Built time series models (ARIMA, SARIMA, Prophet) achieving 21% lower RMSE and 4.5-point MAPE improvement</li><li>Engineered time-based features improving forecast accuracy by ~14%; dashboards enabled 8&ndash;10% inventory cost reduction</li></ul>
+    </div>
+  </div>
+</div></section>
+<hr class="divider">
+
+<section id="education"><div class="container">
+  <div class="sec-label fade-up">Education</div><h2 class="sec-title fade-up">Academic Background</h2>
+  <div class="edu-grid fade-up">
+    <div class="edu-card"><h3>Master of Science &mdash; Computer Science</h3><div class="edu-school">Illinois Institute of Technology</div><div class="edu-date">Jan 2024 &ndash; Dec 2025</div></div>
+    <div class="edu-card"><h3>Bachelor of Engineering &mdash; Computer Engineering</h3><div class="edu-school">Savitribai Phule Pune University</div><div class="edu-date">Aug 2019 &ndash; May 2023</div></div>
+  </div>
+  <div style="margin-top:3rem;"><div class="sec-label fade-up">Certifications</div><h2 class="sec-title fade-up" style="margin-bottom:1.5rem;">AWS Credentials</h2>
+    <div class="cert-list fade-up">
+      <div class="cert-item"><div class="cert-icon">&#9729;</div><div><div class="cert-name">AWS Academy &mdash; Machine Learning for NLP</div><div class="cert-org">Amazon Web Services</div></div></div>
+      <div class="cert-item"><div class="cert-icon">&#9729;</div><div><div class="cert-name">AWS Academy &mdash; Data Engineering</div><div class="cert-org">Amazon Web Services</div></div></div>
+      <div class="cert-item"><div class="cert-icon">&#9729;</div><div><div class="cert-name">AWS Academy &mdash; Machine Learning Foundations</div><div class="cert-org">Amazon Web Services</div></div></div>
+    </div>
+  </div>
+  <div style="margin-top:3rem;"><div class="sec-label fade-up">Publication</div><h2 class="sec-title fade-up" style="margin-bottom:1.5rem;">Research</h2>
+    <div class="pub-card fade-up"><h3>Comparison of Various Deep Learning Algorithms In Evaluating The Prediction of Stock Prices</h3><p>Research comparing deep learning approaches for stock price prediction &mdash; evaluating model architectures, accuracy metrics, and practical applicability in financial forecasting.</p></div>
+  </div>
+</div></section>
+<hr class="divider">
+
+<section id="contact"><div class="container">
+  <div class="sec-label fade-up">Get In Touch</div><h2 class="sec-title fade-up">Let's Connect</h2>
+  <p class="sec-desc fade-up">I'm actively looking for Data Analyst roles where I can bring structured pipelines, clean data models, and insights that move the needle.</p>
+  <div class="contact-row fade-up">
+    <a href="mailto:suhasigadge1325@gmail.com" class="contact-card"><div class="cc-icon">&#9993;</div><div><div class="cc-label">Email</div><div class="cc-value">suhasigadge1325@gmail.com</div></div></a>
+    <a href="https://linkedin.com/in/suhasi-gadge" target="_blank" class="contact-card"><div class="cc-icon">&#128101;</div><div><div class="cc-label">LinkedIn</div><div class="cc-value">in/suhasi-gadge</div></div></a>
+    <a href="https://github.com/suhasi-gadge" target="_blank" class="contact-card"><div class="cc-icon">&#128187;</div><div><div class="cc-label">GitHub</div><div class="cc-value">suhasi-gadge</div></div></a>
+    <a href="https://medium.com/@suhasigadge" target="_blank" class="contact-card"><div class="cc-icon">&#9997;</div><div><div class="cc-label">Medium</div><div class="cc-value">@suhasigadge</div></div></a>
+  </div>
+</div></section>
+
+<footer><div class="container">&copy; 2026 Suhasi Gadge. Built with care.</div></footer>
+<script>
+const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.08});
+document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>
